@@ -1,0 +1,8 @@
+transformers==5.5.3
+peft==0.19.1
+vllm==0.24.0
+ray==2.55.1
+accelerate==1.14.0
+# VERL requires NumPy >=2; mistral-common on Python 3.12 requires NumPy <2.4.
+numpy==2.3.5
+mistral-common==1.11.3

@@ -1,0 +1,106 @@
+{
+  "model": "Qwen3.6-27B",
+  "status": "Final checkpoint identified; X-Teaming completion and final GPQA score author-confirmed",
+  "lineage": [
+    "backbone",
+    "cumulative critic SFT from backbone",
+    "GRPO step33",
+    "JailbreakSkill critic SFT512",
+    "GRPO step20"
+  ],
+  "sft": {
+    "rows": 4092,
+    "composition": {
+      "harmful": 2046,
+      "benign": 2046
+    },
+    "learning_rate": 2e-05,
+    "max_sequence_length": 4096,
+    "gradient_accumulation": 8,
+    "effective_batch": 8,
+    "optimizer_steps": 512,
+    "training_draws": 4096,
+    "cycled_rows": 4,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0
+  },
+  "grpo": {
+    "prompt_rows": 1978,
+    "composition": {
+      "harmful": 1022,
+      "benign": 956
+    },
+    "learning_rate": 1e-06,
+    "train_batch_size": 64,
+    "ppo_mini_batch_size": 32,
+    "rollout_n": 8,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "prompt_cap": 2048,
+    "response_cap": 16384,
+    "planned_steps": 62,
+    "selected_step": 20,
+    "world_size": 16
+  },
+  "schema": "r2ai.recorded_recipe.v1",
+  "record_kind": "historical_recipe_not_runtime_profile",
+  "runnable": false,
+  "initial_parent_model_id": null,
+  "initial_parent_revision": null,
+  "training_data_manifest": null,
+  "checkpoint_artifact_uri": null,
+  "evaluation_manifest": null,
+  "evidence": [
+    {
+      "artifact_name": "selection.json",
+      "sha256": "3c5ea080ad036a2985e629548ab0f2421e284adaf94fdc162976b254228e9425"
+    },
+    {
+      "artifact_name": "formal_config.json",
+      "sha256": "15450f764833f57b54eb343ff6d8b4852091c4f7cb6365897288118233425e02"
+    },
+    {
+      "artifact_name": "train_result.json",
+      "sha256": "fe9eae98c8ef9994a8e4ec9d199ad99f1b3f40bfe35fe921e4795da546b26518"
+    },
+    {
+      "artifact_name": "training_data_receipt.json",
+      "sha256": "a8a7a258f4ce3a3e2594e99d570773f22baf454a1ca82260b617d972b58f194f"
+    },
+    {
+      "artifact_name": "receipt.json",
+      "sha256": "43854315677076a10a9ea7ac59f54d2ebd377ab2f75d5f0c77859287b20a9a1c"
+    },
+    {
+      "artifact_name": "run_scaled_sft_v2_recipe.sh",
+      "sha256": "0dc0baa209380aa5b506a20b2c90e71bfa554874f7ae82d13b94ea27c2e20a61"
+    }
+  ],
+  "referenced_trainer_defaults": {
+    "scope": "Recovered current referenced trainer; historical runtime snapshot unavailable",
+    "learning_rate_schedule": "constant",
+    "warmup_fraction": 0,
+    "seed": 42,
+    "dtype": "bfloat16",
+    "artifact": "autoresearch_peft_critic_sft.py",
+    "sha256": "f7745f5c6938cc59854de115ad1e602fb962cd938a2b392e1c6f7f195c81d85a"
+  },
+  "xteaming_result": {
+    "total_behaviors": 159,
+    "successful_behaviors": 27,
+    "behaviors_without_success": 132,
+    "asr_percent": 16.98,
+    "completion_status": "complete_author_confirmed",
+    "confirmation_date": "2026-09-28",
+    "confirmation_source": "Author confirmed the remaining 11 behaviors were subsequently completed without successful attacks.",
+    "completion_manifest": null
+  },
+  "gpqa_diamond_result": {
+    "accuracy_percent": 86.8,
+    "status": "final_score_author_confirmed",
+    "confirmation_date": "2026-09-28",
+    "confirmation_source": "Author confirmed the manuscript value 86.80% as the final result, superseding the earlier recovered summary of 86.36%.",
+    "evaluation_manifest": null
+  }
+}

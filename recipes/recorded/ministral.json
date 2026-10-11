@@ -1,0 +1,121 @@
+{
+  "model": "Ministral-3-14B-Reasoning-2512",
+  "status": "Author-confirmed final recipe: second-round MAGIC + replay GRPO step34",
+  "lineage": [
+    "backbone",
+    "reasoning-format critic SFT269",
+    "first GRPO step50",
+    "second-round MAGIC + replay GRPO step34"
+  ],
+  "sft": {
+    "rows": 17193,
+    "composition": {
+      "unsafe": 5732,
+      "safe_refusal": 5731,
+      "benign": 5730
+    },
+    "learning_rate": 1e-05,
+    "scheduler": "cosine",
+    "warmup_ratio": 0.03,
+    "max_sequence_length": 4096,
+    "effective_batch": 64,
+    "micro_batch": 1,
+    "gradient_accumulation": 8,
+    "optimizer_steps": 269,
+    "world_size": 8,
+    "lora_rank": 16,
+    "lora_alpha": 32
+  },
+  "grpo": {
+    "prompt_rows": 1088,
+    "composition": {
+      "magic_harmful": 302,
+      "magic_benign": 302,
+      "replay_harmful": 242,
+      "replay_benign": 242
+    },
+    "learning_rate": 1e-06,
+    "train_batch_size": 32,
+    "ppo_mini_batch_size": 16,
+    "rollout_n": 8,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "prompt_cap": 8192,
+    "response_cap": 16384,
+    "planned_steps": 34,
+    "selected_step": 34,
+    "world_size": 8
+  },
+  "schema": "r2ai.recorded_recipe.v1",
+  "record_kind": "historical_recipe_not_runtime_profile",
+  "runnable": false,
+  "initial_parent_model_id": null,
+  "initial_parent_revision": null,
+  "training_data_manifest": null,
+  "checkpoint_artifact_uri": null,
+  "evaluation_manifest": null,
+  "evidence": [
+    {
+      "artifact_name": "formal_config.json",
+      "sha256": "0f83836a58e8f73fb7593412035dcc192f97ba02ebe206bc43cbe0058cf5cfe9"
+    },
+    {
+      "artifact_name": "checkpoint_complete.json",
+      "sha256": "03c556f1346736d093e83dcd328b649dbc46594960285c15de288d64784b8833"
+    },
+    {
+      "artifact_name": "train.env",
+      "sha256": "0fad4028b9bffd22b5aca12d87b6c56047182bde96fe0df7b2f733dc0d5beb7f"
+    },
+    {
+      "artifact_name": "training_cap_16k_receipt.json",
+      "sha256": "848b3ec404bbbfb3f6909828a27cdab9a8090559017c6e737f3fa819625ecf1a"
+    },
+    {
+      "artifact_name": "training_run_manifest.json",
+      "sha256": "0949f087311c7a0544bd383d68641e063dd038c7e47bc13651b0ec4776656a3f"
+    },
+    {
+      "artifact_name": "manifest.json",
+      "sha256": "f87a3499293f8f7c4f8386c3b6ea83133b4c7f1cebae3dd3b4216c439d6d604c"
+    },
+    {
+      "artifact_name": "run_scaled_arm.py",
+      "sha256": "3f472fa9126d67d8f02454390d7eda91f142e8885ea1a8f8b59cfc295667db5e"
+    },
+    {
+      "artifact_name": "STATUS.json",
+      "sha256": "192d4351750e5ef5f5d04556adf45c400c37269327b4143aff6ca771c0debde1"
+    },
+    {
+      "artifact_name": "manifest.json",
+      "sha256": "eea245ec802b002fb9e83eeacb405aeb429e6dd75f34181146e3e420b4cac8c9"
+    }
+  ],
+  "grpo_round0": {
+    "prompt_rows": 4488,
+    "composition": {
+      "harmful": 2244,
+      "benign": 2244
+    },
+    "learning_rate": 2e-06,
+    "train_batch_size": 68,
+    "ppo_mini_batch_size": 34,
+    "rollout_n": 8,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "prompt_cap": 2048,
+    "response_cap_initial": 32768,
+    "response_cap_after_runtime_change": 16384,
+    "validation_cap": 32768,
+    "preserved_step": 50,
+    "configured_steps": 66,
+    "world_size": 16
+  },
+  "final_selection": {
+    "outer_round": 1,
+    "method": "safety_grpo",
+    "step": 34,
+    "confirmation": "Author selected MAGIC + replay step34; MAGIC-only step60 is a separate unselected branch."
+  }
+}

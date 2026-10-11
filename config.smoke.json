@@ -1,0 +1,286 @@
+{
+  "schema": "r2ai.research.v1",
+  "profile": "smoke",
+  "model": {
+    "id": "Qwen/Qwen3-0.6B",
+    "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "path": null,
+    "backend": "single_gpu",
+    "dtype": "float32",
+    "enable_thinking": false,
+    "trust_remote_code": false
+  },
+  "runtime": {
+    "seed": 42,
+    "gpu_ids": "0",
+    "output": "runs/research-smoke",
+    "cache": "data/cache",
+    "max_api_calls": 1200
+  },
+  "services": {
+    "agent": {
+      "base_url": null,
+      "model": "gpt-4o",
+      "api_key_env": "R2AI_API_KEY",
+      "temperature": 0,
+      "timeout_seconds": 120
+    },
+    "critic": {
+      "base_url": null,
+      "model": "claude-sonnet-4-6",
+      "api_key_env": "R2AI_API_KEY",
+      "temperature": 0,
+      "timeout_seconds": 120
+    },
+    "judge": {
+      "base_url": null,
+      "model": "gpt-4o",
+      "api_key_env": "R2AI_API_KEY",
+      "temperature": 0,
+      "timeout_seconds": 120
+    }
+  },
+  "data": {
+    "path": "data/demo/tasks.json",
+    "sources": [
+      "direct",
+      "framed"
+    ],
+    "original_safety_source": null,
+    "max_candidates_per_source": 12,
+    "preparation": {
+      "training": null,
+      "safety_pool": null,
+      "benchmarks": "data/cache/benchmarks",
+      "final_panel": "data/local/final_panel.json",
+      "training_seeds": "data/local/training_seeds.json",
+      "validation_counts": {
+        "wildjailbreak": 128,
+        "h_cot": 50,
+        "xstest": 50,
+        "ifeval": 50
+      },
+      "general": {
+        "source": "manifest",
+        "dataset": "allenai/Dolci-Instruct-SFT",
+        "revision": "bd3c8f3a9b2cc5a9682e44b96ddd0bb2ff027221",
+        "split": "train",
+        "max_examples": 20000,
+        "path": null,
+        "additional_sources": []
+      }
+    }
+  },
+  "search": {
+    "methods": [
+      "critic_sft",
+      "a3",
+      "direct_grpo"
+    ],
+    "n0": 1,
+    "scaling_probe_samples": 2,
+    "max_scaling_probes": 1,
+    "shortlist_size": 2,
+    "max_refinements_per_phase": 2,
+    "max_rounds": 1
+  },
+  "training": {
+    "sft": {
+      "pilot_steps": 2,
+      "full_steps": 4,
+      "learning_rate": 2e-05,
+      "engine": "portable",
+      "microbatch": 1,
+      "deepspeed_stage": 2
+    },
+    "grpo": {
+      "pilot_steps": 2,
+      "full_steps": 2,
+      "learning_rate": 1e-06,
+      "num_generations": 4,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "clip_low": 0.2,
+      "clip_high": 0.28,
+      "reward": "historical_binary_v2",
+      "screening": {
+        "enabled": true,
+        "max_prompts": 0,
+        "batch_size": 8
+      },
+      "top_k": 0,
+      "engine": "portable",
+      "runtime_path": ".runtime/verl",
+      "tensor_parallel_size": 1,
+      "gpu_memory_utilization": 0.55,
+      "max_generation_batches": 8
+    },
+    "batch_size": 8,
+    "max_sequence_length": 4096,
+    "max_new_tokens": 512,
+    "lora": {
+      "rank": 16,
+      "alpha": 32,
+      "dropout": 0.0,
+      "target_modules": [
+        "q_proj",
+        "v_proj"
+      ]
+    },
+    "checkpoint_selection": {
+      "enabled": false,
+      "max_checkpoints": 3
+    }
+  },
+  "evaluation": {
+    "supplemental_threshold": 0.05,
+    "max_new_tokens": 512,
+    "batch_size": 8,
+    "truncation_policy": "score_and_report",
+    "system_prompt": "",
+    "supplemental_dataset": "h_cot",
+    "judge_concurrency": 4,
+    "judge_batch_size": 1,
+    "generation": {
+      "do_sample": null,
+      "temperature": null,
+      "top_p": null,
+      "top_k": null
+    },
+    "utility_tolerance": 0.03,
+    "benign_compliance_tolerance": 0.03,
+    "wjb_asr_tolerance": 0.02,
+    "retry_max_new_tokens": null,
+    "diagnostics": {
+      "training_review_min_count": 3,
+      "training_review_fraction": 0.2
+    }
+  },
+  "skills": {
+    "S1": {
+      "enabled": true,
+      "max_sources": 2
+    },
+    "S2": {
+      "enabled": true,
+      "benign_repeats": [
+        2,
+        3
+      ]
+    },
+    "S3": {
+      "enabled": true,
+      "general_weights": [
+        0.15,
+        0.2
+      ],
+      "lr_multipliers": [
+        0.5
+      ],
+      "update_multipliers": [
+        0.5
+      ]
+    },
+    "S4": {
+      "allow_ineligible_sft": true,
+      "min_safety_gain": 0.05,
+      "max_utility_drop": 0.06,
+      "max_benign_compliance_drop": 0.06,
+      "enabled": true
+    }
+  },
+  "a3": {
+    "hypotheses": 2,
+    "seeds_per_bundle": 2,
+    "observation_truncation_policy": "score_and_report",
+    "workflow": "safin",
+    "safin": {
+      "behaviors": 1,
+      "growth_rounds": 1,
+      "hypotheses_per_round": 3,
+      "pairs_per_hypothesis": 1,
+      "train_fraction": 0.34,
+      "validation_fraction": 0.34,
+      "target_max_tokens": 8192,
+      "weight_bands": [
+        [
+          0.0,
+          2.0,
+          2.5
+        ],
+        [
+          0.075,
+          4.5,
+          2.0
+        ],
+        [
+          0.125,
+          6.5,
+          2.0
+        ],
+        [
+          0.25,
+          7.5,
+          1.8
+        ],
+        [
+          0.375,
+          9.0,
+          1.5
+        ],
+        [
+          1.0,
+          10.0,
+          1.5
+        ]
+      ],
+      "logical_epochs": 1
+    }
+  },
+  "final_evaluation": {
+    "benchmarks": [
+      "wildjailbreak",
+      "harmbench",
+      "h_cot",
+      "xteaming",
+      "xstest",
+      "gpqa_diamond",
+      "mmlu_pro",
+      "ifeval"
+    ],
+    "target": {
+      "base_url": null,
+      "model": null,
+      "api_key_env": "R2AI_TARGET_API_KEY"
+    },
+    "output": "runs/final-evaluation",
+    "workers": 4,
+    "xteaming": {
+      "behavior_path": null,
+      "behavior_count": 159,
+      "planner_sets": 5,
+      "plans_per_set": 10,
+      "plans_to_execute": 10,
+      "max_turns": 7,
+      "target_reasoning_policy": "answer_only",
+      "planner": {
+        "base_url": null,
+        "model": "DeepSeek-R1",
+        "api_key_env": null,
+        "timeout_seconds": null
+      },
+      "attacker": {
+        "base_url": null,
+        "model": "Qwen2.5-32B-Instruct",
+        "api_key_env": null,
+        "timeout_seconds": null
+      },
+      "max_textgrad_iterations": 4
+    },
+    "requests": {
+      "target_timeout_seconds": 3600,
+      "max_retries": 2,
+      "transient_retries": 3
+    }
+  }
+}

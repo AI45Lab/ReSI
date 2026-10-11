@@ -1,0 +1,4 @@
+-r requirements-gpu.txt
+deepspeed==0.18.7
+pandas>=2.2
+pyarrow>=23

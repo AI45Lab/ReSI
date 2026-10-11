@@ -1,0 +1,123 @@
+{
+  "model": "DeepSeek-V4-Flash-0731",
+  "status": "Final checkpoint identified; final IFEval scores author-confirmed",
+  "lineage": [
+    "original A3 checkpoint262",
+    "JailbreakSkill A3 SFT checkpoint262",
+    "multi-source A3 SFT checkpoint262"
+  ],
+  "sft": {
+    "rows": 8400,
+    "composition": {
+      "new_harmful": 1021,
+      "new_benign": 4019,
+      "new_dolci": 1260,
+      "old_harmful": 1360,
+      "old_benign": 320,
+      "old_dolci": 420
+    },
+    "new_old_ratio": "3:1",
+    "dolci_percentage": 20,
+    "logical_sampling_epochs": 5,
+    "physical_training_passes": 1,
+    "learning_rate": 5e-05,
+    "minimum_lr": 0,
+    "scheduler": "cosine",
+    "warmup_ratio": 0.1,
+    "max_sequence_length": 4096,
+    "effective_batch": 32,
+    "micro_batch": 1,
+    "optimizer_steps": 262,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0,
+    "target_modules": "all-linear",
+    "expert_parallel": 8,
+    "tensor_parallel": 1,
+    "pipeline_parallel": 1,
+    "seed": 42
+  },
+  "grpo": null,
+  "schema": "r2ai.recorded_recipe.v1",
+  "record_kind": "historical_recipe_not_runtime_profile",
+  "runnable": false,
+  "initial_parent_model_id": null,
+  "initial_parent_revision": null,
+  "training_data_manifest": null,
+  "checkpoint_artifact_uri": null,
+  "evaluation_manifest": null,
+  "evidence": [
+    {
+      "artifact_name": "final-candidate.json",
+      "sha256": "8e8c7ebc49682dd6fdc5eabdcd486218c712e2c3c1b4df0ae3ad159ff1edd1f0"
+    },
+    {
+      "artifact_name": "final-report.json",
+      "sha256": "8b0fd0b714e4ada632d92e08f1b3296c87ef72bb5aa61667b9485a5c39e6bd17"
+    },
+    {
+      "artifact_name": "train.audit.json",
+      "sha256": "b307514ed79b151634a5c9daf9220c78894a16bb16fe6271edff6daf421177d5"
+    },
+    {
+      "artifact_name": "two-parent-frozen-inputs.json",
+      "sha256": "18c311b44b89871f41a204551258022d929843bb4e4d0bf1ccdaf59921c46344"
+    },
+    {
+      "artifact_name": "args.json",
+      "sha256": "fa87c546cb9bfe4d63414982e4605628c2dd8580727b2d9317bd72c2b1195cfa"
+    }
+  ],
+  "grpo_continuation": {
+    "attempted": true,
+    "selected": false,
+    "reason": "GRPO continuation performed worse than the retained SFT checkpoint.",
+    "provenance": "Author clarification, 2026-09-28",
+    "execution_manifest": null
+  },
+  "backend_reference": {
+    "status": "historical_configuration_only_not_current_gpu_acceptance",
+    "framework": "Megatron-SWIFT",
+    "source_artifact": "args.json",
+    "source_sha256": "fa87c546cb9bfe4d63414982e4605628c2dd8580727b2d9317bd72c2b1195cfa",
+    "settings": {
+      "model_type": "deepseek_v4",
+      "template": "deepseek_v4_flash",
+      "torch_dtype": "bfloat16",
+      "tuner_type": "lora",
+      "target_modules": [
+        "all-linear"
+      ],
+      "expert_model_parallel_size": 8,
+      "tensor_model_parallel_size": 1,
+      "pipeline_model_parallel_size": 1,
+      "micro_batch_size": 1,
+      "global_batch_size": 32,
+      "max_length": 4096,
+      "seq_length": 4096,
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.0,
+      "lr": 5e-05,
+      "min_lr": 0.0,
+      "lr_warmup_fraction": 0.1,
+      "lr_decay_style": "cosine",
+      "num_train_epochs": 1,
+      "finetune": true,
+      "use_hf": false
+    },
+    "model_path": null,
+    "input_data_path": null,
+    "parent_adapter_path": null,
+    "output_path": null,
+    "note": "Bind paths explicitly; do not substitute the experimental Hugging Face layer-sharded worker for the historical EP8 backend."
+  },
+  "ifeval_result": {
+    "loose_prompt_accuracy_percent": 91.39,
+    "loose_instruction_accuracy_percent": 93.69,
+    "status": "final_scores_author_confirmed",
+    "confirmation_date": "2026-09-28",
+    "confirmation_source": "Author confirmed the manuscript final scores, superseding the earlier recovered summary of 90.39% / 92.69%.",
+    "evaluation_manifest": null
+  }
+}

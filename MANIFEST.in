@@ -1,0 +1,8 @@
+include config*.json requirements*.txt LICENSE release-files.txt
+recursive-include scripts *.sh *.py
+recursive-include patches *.patch
+recursive-include docs *.md *.json *.txt
+recursive-include data/demo *.json
+recursive-include recipes *.json
+recursive-include src/r2ai_autoresearch/formal_eval/assets *.txt *.yaml
+recursive-include assets *.png

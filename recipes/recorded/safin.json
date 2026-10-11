@@ -1,0 +1,80 @@
+{
+  "model": "Safin-1 (35B-A3B)",
+  "status": "Final checkpoint and table metrics linked, including documented score corrections",
+  "lineage": [
+    "backbone",
+    "rebuilt A3 SFT209"
+  ],
+  "sft": {
+    "rows": 6716,
+    "composition": {
+      "a3": 5712,
+      "dolci": 1004
+    },
+    "logical_sampling_epochs": 4,
+    "physical_training_passes": 1,
+    "unused_tail_rows": 28,
+    "learning_rate": 5e-05,
+    "minimum_lr": 5e-06,
+    "scheduler": "cosine",
+    "warmup_ratio": 0.1,
+    "max_sequence_length": 16384,
+    "effective_batch": 32,
+    "micro_batch": 1,
+    "optimizer_steps": 209,
+    "lora_rank": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0,
+    "target_modules": "all-linear",
+    "expert_parallel": 8,
+    "tensor_parallel": 1,
+    "pipeline_parallel": 1,
+    "seed": 42
+  },
+  "grpo": null,
+  "schema": "r2ai.recorded_recipe.v1",
+  "record_kind": "historical_recipe_not_runtime_profile",
+  "runnable": false,
+  "initial_parent_model_id": null,
+  "initial_parent_revision": null,
+  "training_data_manifest": null,
+  "checkpoint_artifact_uri": null,
+  "evaluation_manifest": null,
+  "evidence": [
+    {
+      "artifact_name": "args.json",
+      "sha256": "c01cf485bc5c1d10803131793d74a99eaa93acc7d4f9d31ea9abfabb4c48c275"
+    },
+    {
+      "artifact_name": "SFT_DATA_COMPLETE.json",
+      "sha256": "9f2256159e6bb2b756fa707ca066f6d259c55055c98ad987707db0dd46526625"
+    },
+    {
+      "artifact_name": "receipt.json",
+      "sha256": "c1b411c15117b1317de70e83f761f0b9b4d3425cb5d7dad4e32af5a525e3c76e"
+    },
+    {
+      "artifact_name": "CHECKPOINT_FROZEN.json",
+      "sha256": "88ce4d249685e47e4acfdb1569b79fc75f7a43e205dbc29fcb9d867be68ebd9e"
+    },
+    {
+      "artifact_name": "XTEAMING_COMPLETE.json",
+      "sha256": "18f4b4524900a89ac4b3e5cc995d141396bdf8ca2d9121d9774cf0472b598c32"
+    },
+    {
+      "artifact_name": "audit_summary.json",
+      "sha256": "8a785ad44009847cca304c38fe9126de5841e7c9dd7bc09a605b998bacecbb9d"
+    },
+    {
+      "artifact_name": "audit_summary.json",
+      "sha256": "70db2bac81c275bf39a52eab601e8b08764415eed6b7897058ee7549db9b0ce7"
+    }
+  ],
+  "grpo_continuation": {
+    "attempted": false,
+    "selected": false,
+    "reason": "The historical Safin training backend did not support GRPO.",
+    "provenance": "Author clarification, 2026-09-28",
+    "execution_manifest": null
+  }
+}

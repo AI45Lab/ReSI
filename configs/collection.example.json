@@ -1,0 +1,55 @@
+{
+  "providers": {
+    "darwin": {
+      "kind": "darwin_p2",
+      "seed_source": "original",
+      "attempts_per_seed": 2,
+      "max_tokens": 1024,
+      "timeout_seconds": 1800,
+      "repository": null,
+      "skills": [],
+      "service": {
+        "base_url": null,
+        "model": "claude-sonnet-4-6",
+        "api_key_env": "R2AI_API_KEY",
+        "temperature": 0.7,
+        "timeout_seconds": 180
+      }
+    },
+    "jailbreak_skill": {
+      "kind": "jailbreak_skill",
+      "seed_source": "original",
+      "attempts_per_seed": 2,
+      "max_tokens": 1024,
+      "timeout_seconds": 1800,
+      "repository": ".runtime/JailbreakSkill",
+      "skills": [
+        "rewrite-base64",
+        "rewrite-codecomplete"
+      ],
+      "service": {
+        "base_url": null,
+        "model": "claude-sonnet-4-6",
+        "api_key_env": "R2AI_API_KEY",
+        "temperature": 0.7,
+        "timeout_seconds": 180
+      }
+    },
+    "magic": {
+      "kind": "magic",
+      "seed_source": "original",
+      "attempts_per_seed": 2,
+      "max_tokens": 1024,
+      "timeout_seconds": 1800,
+      "repository": null,
+      "skills": [],
+      "service": {
+        "base_url": "http://127.0.0.1:8001/v1",
+        "model": "YOUR_TRAINED_MAGIC_ATTACKER",
+        "api_key_env": "R2AI_API_KEY",
+        "temperature": 0.7,
+        "timeout_seconds": 180
+      }
+    }
+  }
+}

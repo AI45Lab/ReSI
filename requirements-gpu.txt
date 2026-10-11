@@ -1,0 +1,10 @@
+# Tested together on Python 3.12 / Linux / CUDA 12.9. Install torch first (setup.sh).
+transformers==5.15.0
+peft==0.20.0
+trl==1.9.2
+accelerate==1.14.0
+datasets==4.7.0
+huggingface-hub==1.27.0
+safetensors==0.8.0
+numpy==1.26.4
+mistral-common==1.12.0

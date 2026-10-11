@@ -1,0 +1,220 @@
+{
+  "schema": "r2ai.migration.v1",
+  "components": [
+    {
+      "component": "training/deepspeed_critic_sft_a3.py",
+      "source_file": "training/deepspeed_critic_sft_a3.py",
+      "source_sha256": "675a014db362459641ca4814ba6ff9604e9a22ef28c4b0c8544b6a88446fff5d",
+      "changes": [
+        "package imports moved into r2ai_autoresearch",
+        "default trainer hyperparameters exposed to unified worker",
+        "Ministral general/response rows preserve native serialization"
+      ],
+      "gpu_revalidation": "2026-10-05: two-GPU Qwen/Ministral SFT and strict reload; see acceptance.md"
+    },
+    {
+      "component": "training/deepspeed_critic_sft_ministral.py",
+      "source_file": "training/deepspeed_critic_sft_ministral.py",
+      "source_sha256": "faba878d65995615700e5e6c0dfbc25e8933741f0ee775ddc2acd83128333ff2",
+      "changes": [
+        "package imports moved into r2ai_autoresearch",
+        "default trainer hyperparameters exposed to unified worker",
+        "Ministral general/response rows preserve native serialization"
+      ],
+      "gpu_revalidation": "2026-10-05: two-GPU Qwen/Ministral SFT and strict reload; see acceptance.md"
+    },
+    {
+      "component": "training/deepspeed_critic_sft_ministral_official.py",
+      "source_file": "training/deepspeed_critic_sft_ministral_official.py",
+      "source_sha256": "1554b72edeae091e57ba16872672541b8f8cff6d5aa712bf21e9b03d836c5a4f",
+      "changes": [
+        "package imports moved into r2ai_autoresearch",
+        "default trainer hyperparameters exposed to unified worker",
+        "Ministral general/response rows preserve native serialization"
+      ],
+      "gpu_revalidation": "2026-10-05: two-GPU Qwen/Ministral SFT and strict reload; see acceptance.md"
+    },
+    {
+      "component": "training/deepspeed_mixed_sft_ministral_official.py",
+      "source_file": "training/deepspeed_mixed_sft_ministral_official.py",
+      "source_sha256": "25b24159e25142f80875b44d73b9641f755db2b99229c3b735528388f98d1c42",
+      "changes": [
+        "package imports moved into r2ai_autoresearch",
+        "default trainer hyperparameters exposed to unified worker",
+        "Ministral general/response rows preserve native serialization"
+      ],
+      "gpu_revalidation": "2026-10-05: two-GPU Qwen/Ministral SFT and strict reload; see acceptance.md"
+    },
+    {
+      "component": "training/model_family.py",
+      "source_file": "training/model_family.py",
+      "source_sha256": "663349cc4efa5d88a46fd2e03017e35db4af86ce5e5776db4ba4ca29a18f64b1",
+      "changes": [
+        "package imports moved into r2ai_autoresearch"
+      ],
+      "gpu_revalidation": "2026-10-05: two-GPU Qwen/Ministral SFT and strict reload; see acceptance.md"
+    },
+    {
+      "component": "training/verify_peft_reload_multifamily.py",
+      "source_file": "training/verify_peft_reload_multifamily.py",
+      "source_sha256": "11b612ae17ee1edc48f6c842bff4e764d0b0590ffdef0c45f3c40c6eaf45850e",
+      "changes": [
+        "package imports moved into r2ai_autoresearch"
+      ],
+      "gpu_revalidation": "2026-10-05: two-GPU Qwen/Ministral SFT and strict reload; see acceptance.md"
+    },
+    {
+      "component": "training/verify_ministral_adapter_inference.py",
+      "source_file": "training/verify_ministral_adapter_inference.py",
+      "source_sha256": "bbf21082c3b615c751a6a3758e52d2a702bcd4151db2bb2bacef522967eed60e",
+      "changes": [
+        "package imports moved into r2ai_autoresearch"
+      ],
+      "gpu_revalidation": "2026-10-05: two-GPU Qwen/Ministral SFT and strict reload; see acceptance.md"
+    },
+    {
+      "component": "training/merge_adapter_multifamily.py",
+      "source_file": "training/merge_adapter_multifamily.py",
+      "source_sha256": "a7dac1b67d88f9119532e469126b609dec9ebabaea8c1d44477a845817e64f15",
+      "changes": [
+        "package imports moved into r2ai_autoresearch"
+      ],
+      "gpu_revalidation": "2026-10-05: two-GPU Qwen/Ministral SFT and strict reload; see acceptance.md"
+    },
+    {
+      "component": "training/checkpoint_schedule.py",
+      "source_file": "training/checkpoint_schedule.py",
+      "source_sha256": "a56c601c04388ffb763ef1e4f00dff675493b7794fc356560fd313af9dd3ce57",
+      "changes": [
+        "package imports moved into r2ai_autoresearch"
+      ],
+      "gpu_revalidation": "pending"
+    },
+    {
+      "component": "training/reward_policy.py",
+      "source_file": "reward_policy.py",
+      "source_sha256": "632c3982286016d59d84cde1522f98129e35824a857afe3194695ef6b26325c5",
+      "changes": [
+        "strict integer score validation"
+      ],
+      "gpu_revalidation": "policy tested on CPU"
+    },
+    {
+      "component": "formal_eval/cli.py",
+      "source_file": "r2ai_eval/cli.py",
+      "source_sha256": "20705e84d47892efd26edf37812776a2be9769809d6dc9eb0fc982b0fb319815",
+      "changes": [
+        "internal package namespace",
+        "release configuration and bundled assets"
+      ],
+      "gpu_revalidation": "2026-10-05: static benchmark interfaces and authored benign X-Teaming execution; see acceptance.md"
+    },
+    {
+      "component": "formal_eval/io.py",
+      "source_file": "r2ai_eval/io.py",
+      "source_sha256": "c080fe6204791723fbc08070094270c07ccf43068378d93956712c727c95e90c",
+      "changes": [
+        "internal package namespace",
+        "release configuration and bundled assets"
+      ],
+      "gpu_revalidation": "2026-10-05: static benchmark interfaces and authored benign X-Teaming execution; see acceptance.md"
+    },
+    {
+      "component": "formal_eval/data.py",
+      "source_file": "r2ai_eval/data.py",
+      "source_sha256": "e149f84be0452498c7106e097c5f624c8d50699bbafa3c50907fcc2946f6e403",
+      "changes": [
+        "internal package namespace",
+        "release configuration and bundled assets"
+      ],
+      "gpu_revalidation": "2026-10-05: static benchmark interfaces and authored benign X-Teaming execution; see acceptance.md"
+    },
+    {
+      "component": "formal_eval/__init__.py",
+      "source_file": "r2ai_eval/__init__.py",
+      "source_sha256": "b2feb6f893042501b935778377b9b70b912ed0e8db1b5de517f6c630ca69729f",
+      "changes": [
+        "internal package namespace",
+        "release configuration and bundled assets"
+      ],
+      "gpu_revalidation": "2026-10-05: static benchmark interfaces and authored benign X-Teaming execution; see acceptance.md"
+    },
+    {
+      "component": "formal_eval/api.py",
+      "source_file": "r2ai_eval/api.py",
+      "source_sha256": "a6c2427bebfc8ffe60eda7b7dc3d82d46bef10838db4c965b7fd3c3a20397a9f",
+      "changes": [
+        "internal package namespace",
+        "release configuration and bundled assets"
+      ],
+      "gpu_revalidation": "2026-10-05: static benchmark interfaces and authored benign X-Teaming execution; see acceptance.md"
+    },
+    {
+      "component": "formal_eval/__main__.py",
+      "source_file": "r2ai_eval/__main__.py",
+      "source_sha256": "0f7d54f3fbb1f79a85eb8110f11793db99da6f3c61ee979de5abe9a1b5f3fdb3",
+      "changes": [
+        "internal package namespace",
+        "release configuration and bundled assets"
+      ],
+      "gpu_revalidation": "2026-10-05: static benchmark interfaces and authored benign X-Teaming execution; see acceptance.md"
+    },
+    {
+      "component": "formal_eval/xteaming.py",
+      "source_file": "r2ai_eval/xteaming.py",
+      "source_sha256": "7522dc873a4bfa67ff9d4b7cfddedc219ef72e848d4333935713414910d74666",
+      "changes": [
+        "internal package namespace",
+        "release configuration and bundled assets"
+      ],
+      "gpu_revalidation": "2026-10-05: static benchmark interfaces and authored benign X-Teaming execution; see acceptance.md"
+    },
+    {
+      "component": "formal_eval/config.py",
+      "source_file": "r2ai_eval/config.py",
+      "source_sha256": "085d751451bbe731e17ceb60526505840a9cfe014e463f945549ad075f48e606",
+      "changes": [
+        "internal package namespace",
+        "release configuration and bundled assets"
+      ],
+      "gpu_revalidation": "2026-10-05: static benchmark interfaces and authored benign X-Teaming execution; see acceptance.md"
+    },
+    {
+      "component": "formal_eval/scoring.py",
+      "source_file": "r2ai_eval/scoring.py",
+      "source_sha256": "97b8f22e4d341b66f5e05740fd58830613194d5fa4dc94b382bd9079358e7a6c",
+      "changes": [
+        "internal package namespace",
+        "release configuration and bundled assets"
+      ],
+      "gpu_revalidation": "2026-10-05: static benchmark interfaces and authored benign X-Teaming execution; see acceptance.md"
+    },
+    {
+      "component": "patches/verl_historical_runtime.patch",
+      "upstream": "https://github.com/verl-project/verl",
+      "commit": "c4b389adadc58ce51cb2b63e70df497ca166d77f",
+      "patch_sha256": "e90c44b7fecba5436d55a868e274b86bc943a56c18cdd4c55b80e56fb25aca24",
+      "gpu_revalidation": "2026-10-05: Qwen native two-GPU GRPO, nonzero gradients and strict reload passed"
+    },
+    {
+      "component": "collection/providers.py",
+      "source_file": [
+        "scripts/run_darwin_p2_search.py",
+        "scripts/collect_magic_critic_data.py",
+        "autoresearch/adapters/jailbreak_skill.py"
+      ],
+      "changes": [
+        "Historical protocols migrated into unified per-round collector",
+        "No historical filesystem dependency",
+        "Separate trained MAGIC attacker required; DARWIN collector identified as bounded P2, not full upstream evolution"
+      ],
+      "gpu_revalidation": "DARWIN and JailbreakSkill harmless generation interface calls completed; MAGIC trained attacker not tested",
+      "source_sha256": {
+        "scripts/run_darwin_p2_search.py": "18746ff2298f596641c44894f48acf9c000db1e0d7caa84d2c27658f01925ee9",
+        "scripts/collect_magic_critic_data.py": "85897379f0bba26198be210a313e2ada2fabe7b4629099bb84f2b4be882df2ce",
+        "autoresearch/adapters/jailbreak_skill.py": "f70da52cea52ccff7da6030a17cbed0999dfd468e023f15139d93c5d9dce7b70"
+      }
+    }
+  ],
+  "note": "Source filenames and hashes are provenance only. Runtime imports are inside this package; adapted integrations need fresh GPU acceptance."
+}
